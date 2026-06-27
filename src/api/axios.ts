@@ -1,13 +1,20 @@
-import axios from "axios";
+import axios, { AxiosHeaders } from "axios";
 
 const TOKEN_KEY = "fintrack_token";
+const DEFAULT_API_URL = "https://fintrack-api-production-dda1.up.railway.app";
 
 type UnauthorizedHandler = () => void;
 
 let unauthorizedHandler: UnauthorizedHandler | null = null;
 
+export const API_BASE_URL = (import.meta.env.VITE_API_URL ?? DEFAULT_API_URL).replace(/\/$/, "");
+
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ?? "https://fintrack-api-production-dda1.up.railway.app/",
+  baseURL: API_BASE_URL,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
 });
 
 export function getStoredToken() {
@@ -30,7 +37,8 @@ api.interceptors.request.use((config) => {
   const token = getStoredToken();
 
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers = config.headers ?? new AxiosHeaders();
+    config.headers.set("Authorization", `Bearer ${token}`);
   }
 
   return config;
