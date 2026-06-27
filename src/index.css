@@ -1,1 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-fin-red: #2f5bfd;
+  --color-fin-background: #0f0f0f;
+  --color-fin-panel: #1a1a1a;
+  --color-fin-border: #2a2a2a;
+  --color-fin-text: #f5f5f5;
+  --color-fin-muted: #a1a1aa;
+  --color-fin-success: #22c55e;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f46 #18181b;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  background: #0f0f0f;
+  color: #f5f5f5;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}

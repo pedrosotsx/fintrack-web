@@ -1,8 +1,23 @@
+import { Toaster } from "sonner";
 
-import { Login } from "./Pages/Login";
-
+import { AppRoutes } from "./routes/AppRoutes";
 
 export function App() {
-  return <Login />;
+  return (
+    <>
+      <AppRoutes />
+      <Toaster
+        position="top-right"
+        richColors
+        theme="dark"
+        toastOptions={{
+          classNames: {
+            toast: "border border-fin-border bg-fin-panel text-fin-text",
+            success: "border-fin-success",
+            error: "border-fin-red",
+          },
+        }}
+      />
+    </>
+  );
 }
-
