@@ -7,7 +7,7 @@ type UnauthorizedHandler = () => void;
 let unauthorizedHandler: UnauthorizedHandler | null = null;
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ?? "fintrack-api-production-dda1.up.railway.app",
+  baseURL: import.meta.env.VITE_API_URL ?? "https://fintrack-api-production-dda1.up.railway.app/",
 });
 
 export function getStoredToken() {
